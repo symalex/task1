@@ -13,7 +13,7 @@ import android.widget.Spinner;
 
 import java.util.ArrayList;
 
-public class ThirdActivity extends Activity implements View.OnAttachStateChangeListener, AdapterView.OnItemSelectedListener {
+public class ThirdActivity extends Activity implements AdapterView.OnItemSelectedListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,16 +38,6 @@ public class ThirdActivity extends Activity implements View.OnAttachStateChangeL
     public void OnBtnBackClick(View view) {
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
-    }
-
-    @Override
-    public void onViewAttachedToWindow(View v) {
-        Log.e("TAG", "attach to window");
-    }
-
-    @Override
-    public void onViewDetachedFromWindow(View v) {
-        Log.e("TAG", "detach from window");
     }
 
     @Override
