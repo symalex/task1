@@ -13,6 +13,9 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 
 public class SecondActivity extends Activity implements RadioGroup.OnCheckedChangeListener {
+
+    public static final String TAG = ".SecondActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +49,7 @@ public class SecondActivity extends Activity implements RadioGroup.OnCheckedChan
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-        Log.e("TAG", "changed: " + String.valueOf(checkedId));
+        Log.e(TAG, "changed: " + String.valueOf(checkedId));
         ImageView img_view = (ImageView)findViewById(R.id.img_view_second);
         img_view.setScaleType(ImageView.ScaleType.values()[checkedId-1]);
     }

@@ -14,25 +14,18 @@ import android.widget.Spinner;
 import java.util.ArrayList;
 
 public class ThirdActivity extends Activity implements AdapterView.OnItemSelectedListener {
+    public static final String TAG = ".ThirdActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_third);
 
-        RelativeLayout l = (RelativeLayout)findViewById(R.id.layout_third);
+        Spinner spinner = (Spinner)findViewById(R.id.third_spinner);
 
-        Spinner spinner = new Spinner(this);
-
-        ArrayList<String> spinnerArray = new ArrayList<String>();
-        for(int i=0; i< ImageView.ScaleType.values().length; i++) {
-            spinnerArray.add(String.valueOf(ImageView.ScaleType.values()[i]));
-        }
-
-        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, spinnerArray);
+        SampleSpinnerAdapter spinnerArrayAdapter = new SampleSpinnerAdapter(this);
         spinner.setAdapter(spinnerArrayAdapter);
         spinner.setOnItemSelectedListener(this);
-
-        l.addView(spinner);
     }
 
     public void OnBtnBackClick(View view) {
@@ -42,13 +35,13 @@ public class ThirdActivity extends Activity implements AdapterView.OnItemSelecte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        Log.e("TAG", "changed: " + String.valueOf(id));
+        Log.e(TAG, "changed: " + String.valueOf(id));
         ImageView img_view = (ImageView)findViewById(R.id.img_view_third);
         img_view.setScaleType(ImageView.ScaleType.values()[(int)id]);
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-        //Log.e("TAG", "changed: " + String.valueOf(id));
+        Log.e(TAG, "onNothingSelected");
     }
 }
