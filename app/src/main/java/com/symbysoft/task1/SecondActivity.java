@@ -26,6 +26,7 @@ public class SecondActivity extends Activity implements RadioGroup.OnCheckedChan
         RadioGroup rg = new RadioGroup(this);
         rg.setGravity(Gravity.BOTTOM);
         rg.setOrientation(RadioGroup.HORIZONTAL);
+        rg.setHorizontalGravity(Gravity.CENTER_HORIZONTAL);
         RelativeLayout.LayoutParams rg_params = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT,
                 RelativeLayout.LayoutParams.MATCH_PARENT

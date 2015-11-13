@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class SampleSpinnerAdapter extends BaseAdapter {
@@ -46,10 +47,19 @@ public class SampleSpinnerAdapter extends BaseAdapter {
         if( convertView == null ){
             convertView = inflater.inflate(R.layout.layout_spinner, null, false);
             h = new Holder(convertView);
-            convertView.setTag(h);
-        } else  h = (Holder)convertView.getTag(position);
-        if ( h != null && h.view != null )
             h.view.setText(String.valueOf(getItem(position)));
+            convertView.setTag(h);
+        } else {
+            h = (Holder)convertView.getTag(position);
+            if ( h != null )
+            {
+                h.view.setText(String.valueOf(getItem(position)));
+            }
+            else
+            {
+                ((TextView)((LinearLayout)convertView).getChildAt(0)).setText(String.valueOf(getItem(position)));
+            }
+        }
         return convertView;
     }
 }
