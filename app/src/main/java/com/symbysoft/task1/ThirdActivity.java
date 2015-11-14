@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -26,11 +27,20 @@ public class ThirdActivity extends Activity implements AdapterView.OnItemSelecte
         SampleSpinnerAdapter spinnerArrayAdapter = new SampleSpinnerAdapter(this);
         spinner.setAdapter(spinnerArrayAdapter);
         spinner.setOnItemSelectedListener(this);
+
+        Button btn_back = (Button)findViewById(R.id.btn_third_back_activity);
+        btn_back.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                OnBtnBackClick(v);
+            }
+        });
     }
 
     public void OnBtnBackClick(View view) {
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
+        finish();
     }
 
     @Override

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -21,31 +22,31 @@ public class SecondActivity extends Activity implements RadioGroup.OnCheckedChan
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_second);
 
-        RelativeLayout l = (RelativeLayout)findViewById(R.id.layout_second);
+        RadioGroup rg = (RadioGroup)findViewById(R.id.layout_second_rg);
         final RadioButton[] rb = new RadioButton[ImageView.ScaleType.values().length];
-        RadioGroup rg = new RadioGroup(this);
-        rg.setGravity(Gravity.BOTTOM);
-        rg.setOrientation(RadioGroup.HORIZONTAL);
-        rg.setHorizontalGravity(Gravity.CENTER_HORIZONTAL);
-        RelativeLayout.LayoutParams rg_params = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.MATCH_PARENT,
-                RelativeLayout.LayoutParams.MATCH_PARENT
-        );
-        rg.setLayoutParams(rg_params);
-        rg.setOnCheckedChangeListener(this);
         for(int i=0; i<ImageView.ScaleType.values().length; i++){
-            rb[i]  = new RadioButton(this);
+            rb[i] = new RadioButton(this);
             rb[i].setText(String.valueOf(i));
             rb[i].setId(i+1);
             rg.addView(rb[i]);
         }
-        rb[0].setChecked(true);
-        l.addView(rg);
+        rg.check(rb[0].getId());
+        rg.setOnCheckedChangeListener(this);
+
+        Button btn_back = (Button)findViewById(R.id.btn_second_back_activity);
+        btn_back.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                OnBtnBackClick(v);
+            }
+        });
+
     }
 
     public void OnBtnBackClick(View view) {
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
+        finish();
     }
 
     @Override

@@ -49,17 +49,9 @@ public class SampleSpinnerAdapter extends BaseAdapter {
             h = new Holder(convertView);
             h.view.setText(String.valueOf(getItem(position)));
             convertView.setTag(h);
-        } else {
-            h = (Holder)convertView.getTag(position);
-            if ( h != null )
-            {
-                h.view.setText(String.valueOf(getItem(position)));
-            }
-            else
-            {
-                ((TextView)((LinearLayout)convertView).getChildAt(0)).setText(String.valueOf(getItem(position)));
-            }
         }
+        h = (Holder)convertView.getTag();
+        h.view.setText(String.valueOf(getItem(position)));
         return convertView;
     }
 }
