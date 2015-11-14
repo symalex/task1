@@ -1,2 +1,1 @@
-# Android Cource Task 1
-
+# Android courses Task 1
