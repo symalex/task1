@@ -10,48 +10,58 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class SampleSpinnerAdapter extends BaseAdapter {
-    Context ctx;
-    LayoutInflater inflater;
+public class SampleSpinnerAdapter extends BaseAdapter
+{
+	Context ctx;
+	LayoutInflater inflater;
 
-    static class Holder{
-        TextView view;
-        Holder(View v){
-            this.view = (TextView)v.findViewById(R.id.spinner_item);
-        }
-    }
+	static class Holder
+	{
+		TextView view;
 
-    public SampleSpinnerAdapter(Context ctx) {
-        this.ctx = ctx;
-        this.inflater = LayoutInflater.from(ctx);
-    }
+		Holder(View v)
+		{
+			this.view = (TextView) v.findViewById(R.id.spinner_item);
+		}
+	}
 
-    @Override
-    public int getCount() {
-        return ScaleType.values().length;
-    }
+	public SampleSpinnerAdapter(Context ctx)
+	{
+		this.ctx = ctx;
+		this.inflater = LayoutInflater.from(ctx);
+	}
 
-    @Override
-    public ImageView.ScaleType getItem(int position) {
-        return ScaleType.values()[position];
-    }
+	@Override
+	public int getCount()
+	{
+		return ScaleType.values().length;
+	}
 
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
+	@Override
+	public ImageView.ScaleType getItem(int position)
+	{
+		return ScaleType.values()[position];
+	}
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        Holder h;
-        if( convertView == null ){
-            convertView = inflater.inflate(R.layout.layout_spinner, null, false);
-            h = new Holder(convertView);
-            h.view.setText(String.valueOf(getItem(position)));
-            convertView.setTag(h);
-        }
-        h = (Holder)convertView.getTag();
-        h.view.setText(String.valueOf(getItem(position)));
-        return convertView;
-    }
+	@Override
+	public long getItemId(int position)
+	{
+		return position;
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent)
+	{
+		Holder h;
+		if (convertView == null)
+		{
+			convertView = inflater.inflate(R.layout.layout_spinner, null, false);
+			h = new Holder(convertView);
+			h.view.setText(String.valueOf(getItem(position)));
+			convertView.setTag(h);
+		}
+		h = (Holder) convertView.getTag();
+		h.view.setText(String.valueOf(getItem(position)));
+		return convertView;
+	}
 }
