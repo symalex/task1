@@ -28,9 +28,10 @@ public class SecondActivity extends Activity implements RadioGroup.OnCheckedChan
             rb[i] = new RadioButton(this);
             rb[i].setText(String.valueOf(i));
             rb[i].setId(i+1);
+            rg.setTag(rb[i].getId(),i);
             rg.addView(rb[i]);
         }
-        rg.check(rb[0].getId());
+        rg.check((int)rg.getTag(0));
         rg.setOnCheckedChangeListener(this);
 
         Button btn_back = (Button)findViewById(R.id.btn_second_back_activity);
@@ -53,6 +54,6 @@ public class SecondActivity extends Activity implements RadioGroup.OnCheckedChan
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         Log.e(TAG, "changed: " + String.valueOf(checkedId));
         ImageView img_view = (ImageView)findViewById(R.id.img_view_second);
-        img_view.setScaleType(ImageView.ScaleType.values()[checkedId-1]);
+        img_view.setScaleType(ImageView.ScaleType.values()[(int)group.getTag(checkedId)]);
     }
 }
